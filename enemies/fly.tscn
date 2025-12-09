@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://dux0qldcad38t"]
+
+[ext_resource type="PackedScene" uid="uid://525bke0fltj" path="res://enemies/tick.tscn" id="1_nmd8j"]
+[ext_resource type="Script" uid="uid://whf8xtg4g3r6" path="res://enemies/fly.gd" id="2_5x2l3"]
+[ext_resource type="Texture2D" uid="uid://c8jtqplqsvyww" path="res://assets/enemy-4.png" id="2_d1yl7"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5x2l3"]
+radius = 12.0
+height = 48.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d1yl7"]
+size = Vector2(50, 28)
+
+[node name="Fly" instance=ExtResource("1_nmd8j")]
+script = ExtResource("2_5x2l3")
+health = 4
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_d1yl7")
+offset = Vector2(0, 0)
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(2, 0)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_5x2l3")
+
+[node name="hitbox" parent="." index="2" groups=["Enemy"]]
+
+[node name="CollisionShape2D" parent="hitbox" index="0"]
+visible = false
+position = Vector2(2, 0.5)
+disabled = true
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="hitbox" index="1"]
+position = Vector2(2, 0)
+shape = SubResource("RectangleShape2D_d1yl7")

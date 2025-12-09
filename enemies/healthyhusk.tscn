@@ -1,0 +1,62 @@
+[gd_scene load_steps=7 format=3 uid="uid://dcgowsn0vsq5b"]
+
+[ext_resource type="PackedScene" uid="uid://qlf1o01jwoif" path="res://enemies/speedyhusk.tscn" id="1_rxegh"]
+[ext_resource type="Script" uid="uid://be5vjgj0pkhd1" path="res://enemies/healthyhusk.gd" id="2_y3kv7"]
+[ext_resource type="Texture2D" uid="uid://blg7xjegl0ky6" path="res://assets/enemy-2.png" id="3_dy1kh"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6urxf"]
+radius = 9.0
+height = 60.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rxegh"]
+radius = 7.0
+height = 60.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y3kv7"]
+size = Vector2(20, 61)
+
+[node name="HealthyHusk" instance=ExtResource("1_rxegh")]
+script = ExtResource("2_y3kv7")
+health = 6
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("3_dy1kh")
+
+[node name="RayCast2D" parent="Sprite2D" index="0"]
+target_position = Vector2(-11, 27)
+
+[node name="RayCast2D2" parent="Sprite2D" index="1"]
+position = Vector2(-8, 16)
+target_position = Vector2(0, 20)
+
+[node name="RayCast2D3" parent="Sprite2D" index="2"]
+target_position = Vector2(15, 26)
+
+[node name="RayCast2D4" parent="Sprite2D" index="3"]
+position = Vector2(13, 16)
+target_position = Vector2(0, 20)
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(3, 2)
+shape = SubResource("CapsuleShape2D_6urxf")
+
+[node name="CollisionShape2D2" parent="." index="2"]
+visible = false
+disabled = true
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="." index="3"]
+position = Vector2(3, 3)
+shape = SubResource("CapsuleShape2D_rxegh")
+
+[node name="hitbox" parent="." index="4" groups=["Enemy"]]
+
+[node name="CollisionShape2D" parent="hitbox" index="0"]
+position = Vector2(2, 2)
+
+[node name="CollisionShape2D2" parent="hitbox" index="1"]
+visible = false
+disabled = true
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="hitbox" index="2"]
+position = Vector2(2, 2.5)
+shape = SubResource("RectangleShape2D_y3kv7")

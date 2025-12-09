@@ -1,11 +1,13 @@
 extends CharacterBody2D
 
-@export var health = 2
+@export var health = 4
 @export var damage = 1.0
 
 func _process(delta: float) -> void:
 	if health <= 0:
-		queue_free()
+		$CollisionShape2D.disabled = true
+		$hitbox/CollisionShape2D2.disabled = true
+		$Sprite2D.visible = false
 
 func _on_hitbox_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Sword"):
@@ -13,8 +15,7 @@ func _on_hitbox_area_entered(area: Area2D) -> void:
 		if Main.soul <= 1.0:
 			Main.soul += 0.25
 	if area.is_in_group("Fireball"):
-		health -= 2
-
+		health -= 4
 
 func _on_hitbox_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):

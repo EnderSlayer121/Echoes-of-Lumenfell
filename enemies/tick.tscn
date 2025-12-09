@@ -4,12 +4,12 @@
 [ext_resource type="Texture2D" uid="uid://meffjopaibs5" path="res://assets/enemy-3.png" id="1_p7q8a"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_budnw"]
-radius = 8.062258
+radius = 10.049875
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nc4nm"]
-size = Vector2(22, 18)
+size = Vector2(25, 20)
 
-[node name="Tick" type="CharacterBody2D"]
+[node name="Tick" type="CharacterBody2D" groups=["Enemy"]]
 z_index = -1
 script = ExtResource("1_budnw")
 
@@ -23,11 +23,12 @@ shape = SubResource("CircleShape2D_budnw")
 
 [node name="hitbox" type="Area2D" parent="."]
 collision_layer = 4
-collision_mask = 2
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
-position = Vector2(1, 0)
+position = Vector2(1.5, 0)
 shape = SubResource("RectangleShape2D_nc4nm")
 debug_color = Color(0.8795367, 0.08539801, 0.7947581, 0.41960785)
 
 [connection signal="area_entered" from="hitbox" to="." method="_on_hitbox_area_entered"]
+[connection signal="body_entered" from="hitbox" to="." method="_on_hitbox_body_entered"]

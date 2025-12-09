@@ -29,11 +29,19 @@ var dash_timer = Timer
 @export_category("Sword Slashing Variables")
 @export var is_attacking = false
 
+@export_category("Soul Charging variables")
+@export var hold_time = 1.5
+var hold_timer = 0.0
+var is_holding = false
+var is_fireball = false
+
 
 func _ready() -> void:
 	$"sword hitbox/sword_collider".disabled = true
 
 func _physics_process(delta: float) -> void:
+	if Main.health <= 0:
+		dead()
 	if !is_dashing:
 		velocity.y += gravity * delta
 	elif is_dashing:
@@ -43,6 +51,7 @@ func _physics_process(delta: float) -> void:
 	wall_jumping()
 	set_animations()
 	flip()
+	soul_use(delta)
 	move_and_slide()
 
 func _input(event: InputEvent) -> void:
@@ -62,7 +71,7 @@ func ground_movement():
 		dash()
 
 func set_animations():
-	if !is_attacking:
+	if !is_attacking and !is_fireball:
 		$AnimationPlayer.speed_scale = 1.0
 		if velocity.x != 0:
 			$AnimationPlayer.play("walk")
@@ -77,6 +86,10 @@ func set_animations():
 	if is_attacking:
 		$AnimationPlayer.speed_scale = 2.5
 		$AnimationPlayer.play("attack_forward")
+	if is_holding and !is_fireball:
+		$AnimationPlayer.play("charge")
+	if is_fireball:
+		$AnimationPlayer.play("blast")
 
 func flip():
 	if velocity.x > 0:
@@ -108,7 +121,9 @@ func jumping():
 func wall_jumping():
 	if is_on_wall_only():
 		velocity.y = wall_slide
+		print("wall sliding")
 		if Input.is_action_just_pressed("jump") and right_ray.is_colliding():
+			print("wall jumping")
 			jump_amount = 2
 			velocity = Vector2(-wall_x_force, wall_y_force)
 			wall_jumping_in_progress()
@@ -141,3 +156,52 @@ func dash_in_progress():
 
 func reset_states():
 	is_attacking = false
+
+func dead():
+	get_tree().reload_current_scene()
+	Main.health = 4
+	Main.soul = 0.0
+
+func soul_use(delta):
+	if Input.is_action_just_pressed("soul_use") and Main.soul > 0.0:
+		is_holding = true
+		$parts/charge.visible = true
+		hold_timer = 0.0
+	
+	if is_holding:
+		velocity = Vector2.ZERO
+		if Input.is_action_pressed("soul_use") and hold_timer <= hold_time:
+			hold_timer += delta
+		else:
+			if hold_timer >= hold_time:
+				can_charge_soul()
+				print("soul can be charged")
+			elif hold_timer < hold_time:
+				is_fireball = true
+				can_fireball()
+				print("soul can be fireballed")
+			is_holding = false
+			hold_timer = 0.0
+
+func can_charge_soul():
+	if Main.soul >= 0.25:
+		Main.health += 1
+		Main.soul -= 0.25
+	$parts/charge.visible = false
+
+func can_fireball():
+	if Main.soul >= 0.25:
+		var fireball = load("res://Wanderer/fireball.tscn").instantiate()
+		if facing_right:
+			fireball.global_position = Vector2($".".position.x + 35, $".".position.y - 15)
+			fireball.set("velocity", Vector2(500 * 1, 0))
+		elif !facing_right:
+			fireball.global_position = Vector2($".".position.x - 35, $".".position.y - 15)
+			fireball.rotation_degrees = 180
+			fireball.set("velocity", Vector2(500 * -1, 0))
+		get_parent().add_child(fireball)
+		$"../Timer".start()
+		await $"../Timer".timeout
+		#Main.soul -= 0.25
+	$parts/charge.visible = false
+	is_fireball = false

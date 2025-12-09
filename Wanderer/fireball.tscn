@@ -1,0 +1,71 @@
+[gd_scene load_steps=10 format=3 uid="uid://pe7p5bsqhb1s"]
+
+[ext_resource type="Texture2D" uid="uid://b4lfbe7vnvpm5" path="res://assets/Wanderer.png" id="1_723v3"]
+[ext_resource type="Script" uid="uid://bf0bgjdtaf5uq" path="res://Wanderer/fireball.gd" id="1_ry1af"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ry1af"]
+atlas = ExtResource("1_723v3")
+region = Rect2(0, 128, 62, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n6c2x"]
+atlas = ExtResource("1_723v3")
+region = Rect2(62, 128, 62, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_drm5d"]
+atlas = ExtResource("1_723v3")
+region = Rect2(124, 128, 62, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pv52a"]
+atlas = ExtResource("1_723v3")
+region = Rect2(186, 128, 62, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kw3t1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ry1af")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n6c2x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_drm5d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pv52a")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tiggq"]
+radius = 15.033297
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jyq0g"]
+radius = 16.0
+height = 46.0
+
+[node name="fireball" type="Area2D"]
+scale = Vector2(2, 2)
+collision_layer = 2
+collision_mask = 12
+script = ExtResource("1_ry1af")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_kw3t1")
+frame = 2
+frame_progress = 0.8158286
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_tiggq")
+
+[node name="hitbox" type="Area2D" parent="." groups=["Fireball"]]
+collision_layer = 2
+collision_mask = 12
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
+position = Vector2(4, 0)
+shape = SubResource("CapsuleShape2D_jyq0g")
+
+[connection signal="body_entered" from="hitbox" to="." method="_on_hitbox_body_entered"]
