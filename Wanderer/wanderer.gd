@@ -11,7 +11,7 @@ var movement = Vector2()
 @export var jump_amount = 2
 
 @export_category("Wall Jumping Variables")
-@export var wall_slide = 10
+@export var wall_slide = 40
 @onready var right_ray: RayCast2D = $RayCast/right_ray
 @export var wall_x_force = 200.0
 @export var wall_y_force = -220.0
@@ -26,6 +26,13 @@ var dash_key_pressed = 0
 var is_dashing = false
 var dash_timer = Timer
 
+@export_category("Sword Slashing Variables")
+@export var is_attacking = false
+
+
+func _ready() -> void:
+	$"sword hitbox/sword_collider".disabled = true
+
 func _physics_process(delta: float) -> void:
 	if !is_dashing:
 		velocity.y += gravity * delta
@@ -37,6 +44,10 @@ func _physics_process(delta: float) -> void:
 	set_animations()
 	flip()
 	move_and_slide()
+
+func _input(event: InputEvent) -> void:
+	if Input.is_action_just_pressed("slash"):
+		is_attacking = true
 
 func ground_movement():
 	if is_wall_jumping == false and !is_dashing:
@@ -51,16 +62,21 @@ func ground_movement():
 		dash()
 
 func set_animations():
-	if velocity.x != 0:
-		$AnimationPlayer.play("walk")
-	if velocity.x == 0:
-		$AnimationPlayer.play("idle")
-	if velocity.y < 0:
-		$AnimationPlayer.play("jump")
-	if velocity.y > 10:
-		$AnimationPlayer.play("fall")
-	if is_on_wall_only() == true:
-		$AnimationPlayer.play("slide")
+	if !is_attacking:
+		$AnimationPlayer.speed_scale = 1.0
+		if velocity.x != 0:
+			$AnimationPlayer.play("walk")
+		if velocity.x == 0:
+			$AnimationPlayer.play("idle")
+		if velocity.y < 0:
+			$AnimationPlayer.play("jump")
+		if velocity.y > 10:
+			$AnimationPlayer.play("fall")
+		if is_on_wall_only() == true:
+			$AnimationPlayer.play("slide")
+	if is_attacking:
+		$AnimationPlayer.speed_scale = 2.5
+		$AnimationPlayer.play("attack_forward")
 
 func flip():
 	if velocity.x > 0:
@@ -122,3 +138,6 @@ func dash_in_progress():
 		dash_key_pressed = 0
 	else:
 		return
+
+func reset_states():
+	is_attacking = false

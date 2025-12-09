@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://525bke0fltj"]
+
+[ext_resource type="Script" uid="uid://d3wggtx5y5i3o" path="res://enemies/tick.gd" id="1_budnw"]
+[ext_resource type="Texture2D" uid="uid://meffjopaibs5" path="res://assets/enemy-3.png" id="1_p7q8a"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_budnw"]
+radius = 8.062258
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nc4nm"]
+size = Vector2(22, 18)
+
+[node name="Tick" type="CharacterBody2D"]
+z_index = -1
+script = ExtResource("1_budnw")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_p7q8a")
+offset = Vector2(-9, -9)
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_budnw")
+
+[node name="hitbox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
+position = Vector2(1, 0)
+shape = SubResource("RectangleShape2D_nc4nm")
+debug_color = Color(0.8795367, 0.08539801, 0.7947581, 0.41960785)
+
+[connection signal="area_entered" from="hitbox" to="." method="_on_hitbox_area_entered"]
