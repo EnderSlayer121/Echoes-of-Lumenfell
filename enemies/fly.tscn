@@ -11,7 +11,7 @@ height = 48.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d1yl7"]
 size = Vector2(50, 28)
 
-[node name="Fly" instance=ExtResource("1_nmd8j")]
+[node name="Fly" groups=["Savable"] instance=ExtResource("1_nmd8j")]
 script = ExtResource("2_5x2l3")
 health = 4
 

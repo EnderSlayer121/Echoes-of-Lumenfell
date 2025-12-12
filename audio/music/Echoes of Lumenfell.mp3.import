@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://6b3t62vhasuh"
+path="res://.godot/imported/Echoes of Lumenfell.mp3-1e0848e502a74e8db71b1e363283ea54.mp3str"
+
+[deps]
+
+source_file="res://audio/music/Echoes of Lumenfell.mp3"
+dest_files=["res://.godot/imported/Echoes of Lumenfell.mp3-1e0848e502a74e8db71b1e363283ea54.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

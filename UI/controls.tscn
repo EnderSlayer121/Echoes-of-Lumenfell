@@ -1,0 +1,242 @@
+[gd_scene load_steps=13 format=3 uid="uid://bmj5m20e6ryyf"]
+
+[ext_resource type="PackedScene" uid="uid://bda12lngjxqh1" path="res://UI/mainmenu.tscn" id="1_7a52b"]
+[ext_resource type="Script" uid="uid://hnrg7a5h732q" path="res://UI/controls.gd" id="2_2oh8b"]
+[ext_resource type="LabelSettings" uid="uid://dwxmjxiy141fq" path="res://UI/mainmenu2.tres" id="2_03eog"]
+[ext_resource type="LabelSettings" uid="uid://bmb7p83v7nfra" path="res://UI/mainmenu3.tres" id="2_xtm8h"]
+[ext_resource type="Texture2D" uid="uid://bmhe8jf86xiaw" path="res://assets/Controls/Controller/controller buttons.png" id="4_2oh8b"]
+[ext_resource type="Texture2D" uid="uid://od70ihb8tsbm" path="res://assets/Controls/Keyboard/Left.png" id="5_cp5kw"]
+[ext_resource type="Texture2D" uid="uid://cqjux85wtf2ti" path="res://assets/Controls/Keyboard/Right.png" id="6_2wyvi"]
+[ext_resource type="Texture2D" uid="uid://d1b2fyujoj5h1" path="res://assets/Controls/Keyboard/Up.png" id="7_def4d"]
+[ext_resource type="Texture2D" uid="uid://c8pejprsmar3m" path="res://assets/Controls/Keyboard/Spacebar.png" id="8_jf4we"]
+[ext_resource type="Texture2D" uid="uid://bug7bv0u5nawg" path="res://assets/Controls/Keyboard/X.png" id="9_0qap5"]
+[ext_resource type="Texture2D" uid="uid://dsugaydvfay0s" path="res://assets/Controls/Keyboard/Z.png" id="10_al0j0"]
+[ext_resource type="Texture2D" uid="uid://d236vow22j6ep" path="res://assets/Controls/Keyboard/C.png" id="11_plbov"]
+
+[node name="CanvasLayer" instance=ExtResource("1_7a52b")]
+script = ExtResource("2_2oh8b")
+
+[node name="New Game" parent="." index="1"]
+offset_left = 288.0
+offset_top = -288.0
+offset_right = 576.0
+offset_bottom = -240.0
+
+[node name="Controls" parent="." index="2"]
+offset_left = 288.0
+offset_top = -240.0
+offset_right = 576.0
+offset_bottom = -192.0
+
+[node name="Quit" parent="." index="3"]
+offset_left = 288.0
+offset_top = -192.0
+offset_right = 576.0
+offset_bottom = -144.0
+
+[node name="Label" parent="." index="5"]
+text = "Controls:"
+
+[node name="Label2" type="Label" parent="." index="7"]
+offset_left = 160.0
+offset_top = 112.0
+offset_right = 342.0
+offset_bottom = 154.96774
+text = "Keyboard"
+label_settings = ExtResource("2_xtm8h")
+
+[node name="Label" type="Label" parent="Label2" index="0"]
+layout_mode = 0
+offset_left = 328.0
+offset_top = 48.0
+offset_right = 387.0
+offset_bottom = 81.41936
+text = "Left"
+label_settings = ExtResource("2_03eog")
+
+[node name="Label2" type="Label" parent="Label2" index="1"]
+layout_mode = 0
+offset_left = 328.0
+offset_top = 104.0
+offset_right = 407.0
+offset_bottom = 137.41936
+text = "Right"
+label_settings = ExtResource("2_03eog")
+
+[node name="Label3" type="Label" parent="Label2" index="2"]
+layout_mode = 0
+offset_left = 328.0
+offset_top = 160.0
+offset_right = 408.0
+offset_bottom = 193.41936
+text = "Jump"
+label_settings = ExtResource("2_03eog")
+
+[node name="Label4" type="Label" parent="Label2" index="3"]
+layout_mode = 0
+offset_left = 328.0
+offset_top = 216.0
+offset_right = 424.0
+offset_bottom = 249.41936
+text = "Attack"
+label_settings = ExtResource("2_03eog")
+
+[node name="Label5" type="Label" parent="Label2" index="4"]
+layout_mode = 0
+offset_left = 328.0
+offset_top = 272.0
+offset_right = 403.0
+offset_bottom = 305.41934
+text = "Dash"
+label_settings = ExtResource("2_03eog")
+
+[node name="Label6" type="Label" parent="Label2" index="5"]
+layout_mode = 0
+offset_left = 240.0
+offset_top = 336.0
+offset_right = 494.0
+offset_bottom = 378.96774
+text = "Soul Abilities"
+label_settings = ExtResource("2_xtm8h")
+
+[node name="Label7" type="Label" parent="Label2" index="6"]
+layout_mode = 0
+offset_left = 280.0
+offset_top = 400.0
+offset_right = 474.0
+offset_bottom = 433.41934
+text = "Charge (HOLD)"
+label_settings = ExtResource("2_03eog")
+
+[node name="Label8" type="Label" parent="Label2" index="7"]
+layout_mode = 0
+offset_left = 280.0
+offset_top = 456.0
+offset_right = 482.0
+offset_bottom = 489.41934
+text = "Fireball (TAP)"
+label_settings = ExtResource("2_03eog")
+
+[node name="Label3" type="Label" parent="." index="8"]
+offset_left = 720.0
+offset_top = 112.0
+offset_right = 916.0
+offset_bottom = 154.96774
+text = "Controller"
+label_settings = ExtResource("2_xtm8h")
+
+[node name="ControllerButtons" type="Sprite2D" parent="Label3" index="0"]
+position = Vector2(-112, 64)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_2oh8b")
+hframes = 7
+vframes = 3
+
+[node name="ControllerButtons2" type="Sprite2D" parent="Label3" index="1"]
+position = Vector2(-48, 64)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_2oh8b")
+region_enabled = true
+region_rect = Rect2(237.67207, 271.0085, 137.62541, 127.37671)
+
+[node name="ControllerButtons3" type="Sprite2D" parent="Label3" index="2"]
+position = Vector2(-112, 120)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_2oh8b")
+hframes = 7
+vframes = 3
+
+[node name="ControllerButtons4" type="Sprite2D" parent="Label3" index="3"]
+position = Vector2(-112, 176)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_2oh8b")
+hframes = 7
+vframes = 3
+
+[node name="ControllerButtons7" type="Sprite2D" parent="Label3" index="4"]
+position = Vector2(-80, 288)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_2oh8b")
+hframes = 7
+vframes = 3
+frame = 6
+
+[node name="ControllerButtons8" type="Sprite2D" parent="Label3" index="5"]
+position = Vector2(-85, 232)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_2oh8b")
+region_enabled = true
+region_rect = Rect2(510.67853, 264.59424, 136.16132, 137.62543)
+
+[node name="ControllerButtons5" type="Sprite2D" parent="Label3" index="6"]
+position = Vector2(-48, 119)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_2oh8b")
+region_enabled = true
+region_rect = Rect2(237.67207, 271.0085, 137.62541, 127.37671)
+
+[node name="ControllerButtons6" type="Sprite2D" parent="Label3" index="7"]
+position = Vector2(-48, 176)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_2oh8b")
+region_enabled = true
+region_rect = Rect2(237.67207, 271.0085, 137.62541, 127.37671)
+
+[node name="ControllerButtons9" type="Sprite2D" parent="Label3" index="8"]
+position = Vector2(-21, 352)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_2oh8b")
+region_enabled = true
+region_rect = Rect2(373.83337, 266.61624, 137.62543, 133.2331)
+
+[node name="Left" type="Sprite2D" parent="Label3" index="9"]
+position = Vector2(-298, 64)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("5_cp5kw")
+
+[node name="Right" type="Sprite2D" parent="Label3" index="10"]
+position = Vector2(-298, 120)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("6_2wyvi")
+
+[node name="Up" type="Sprite2D" parent="Label3" index="11"]
+position = Vector2(-272, 176)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("7_def4d")
+
+[node name="Spacebar" type="Sprite2D" parent="Label3" index="12"]
+position = Vector2(-328, 176)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("8_jf4we")
+
+[node name="Z" type="Sprite2D" parent="Label3" index="13"]
+position = Vector2(-298, 288)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("10_al0j0")
+
+[node name="X" type="Sprite2D" parent="Label3" index="14"]
+position = Vector2(-298, 232)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("9_0qap5")
+
+[node name="C" type="Sprite2D" parent="Label3" index="15"]
+position = Vector2(-368, 352)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("11_plbov")
+
+[node name="Button" type="Button" parent="." index="9"]
+offset_left = 72.0
+offset_top = 40.0
+offset_right = 248.0
+offset_bottom = 88.0
+
+[node name="Label" type="Label" parent="Button" index="0"]
+layout_mode = 0
+offset_right = 176.0
+offset_bottom = 48.0
+text = "Back"
+label_settings = ExtResource("2_xtm8h")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

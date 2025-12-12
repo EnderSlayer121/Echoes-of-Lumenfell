@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://cgmmdsqcyg5w1"]
+
+[ext_resource type="PackedScene" uid="uid://cgqat5wjwwcph" path="res://UI/fail.tscn" id="1_llcjf"]
+[ext_resource type="Script" uid="uid://dtg2rkq4f5eut" path="res://UI/fail_2.gd" id="2_nat8d"]
+
+[node name="CanvasLayer" instance=ExtResource("1_llcjf")]
+script = ExtResource("2_nat8d")
+
+[node name="Label3" parent="." index="3"]
+text = "Your mask is swallowed by the growing green as the 
+corruption overtakes Greenpath and approaches Lumenfell. 
+The overgrowth tangles around your withering mask 
+as the forest forever hushes."
+
+[node name="Load" parent="." index="5"]
+offset_left = 56.0
+offset_top = 347.0
+offset_right = 358.0
+offset_bottom = 403.0

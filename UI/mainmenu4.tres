@@ -1,0 +1,19 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://ds2gvx7wksw1h"]
+
+[sub_resource type="SystemFont" id="SystemFont_6xc76"]
+font_names = PackedStringArray("Lucida Fax")
+font_weight = 999
+font_stretch = 50
+hinting = 2
+multichannel_signed_distance_field = true
+msdf_pixel_range = 0
+msdf_size = 62
+
+[resource]
+font = SubResource("SystemFont_6xc76")
+font_size = 36
+font_color = Color(0.8128882, 0.903484, 0.9922363, 1)
+outline_color = Color(0.3529907, 0.0029394112, 0.14653257, 1)
+shadow_size = 15
+shadow_color = Color(0.2936058, 0.29304907, 0.5338307, 1)
+shadow_offset = Vector2(1.405, 1.095)

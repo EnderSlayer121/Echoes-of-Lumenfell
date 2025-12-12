@@ -10,7 +10,7 @@ height = 32.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0ld5p"]
 size = Vector2(27, 33)
 
-[node name="SpeedyHusk" groups=["Enemy"] instance=ExtResource("1_5ulu3")]
+[node name="SpeedyHusk" groups=["Savable"] instance=ExtResource("1_5ulu3")]
 collision_mask = 8
 script = ExtResource("2_0ld5p")
 health = 4

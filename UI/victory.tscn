@@ -1,0 +1,63 @@
+[gd_scene load_steps=5 format=3 uid="uid://b2wput7fue2tu"]
+
+[ext_resource type="PackedScene" uid="uid://bda12lngjxqh1" path="res://UI/mainmenu.tscn" id="1_x0fca"]
+[ext_resource type="LabelSettings" uid="uid://bmb7p83v7nfra" path="res://UI/mainmenu3.tres" id="2_a5iy6"]
+[ext_resource type="AudioStream" uid="uid://g2ugvkuxnggc" path="res://audio/music/Credits.mp3" id="3_m1mla"]
+[ext_resource type="LabelSettings" uid="uid://ds2gvx7wksw1h" path="res://UI/mainmenu4.tres" id="4_tbef5"]
+
+[node name="CanvasLayer" instance=ExtResource("1_x0fca")]
+
+[node name="New Game" parent="." index="1"]
+offset_top = -200.0
+offset_bottom = -152.0
+
+[node name="Controls" parent="." index="2"]
+offset_left = 520.0
+offset_top = -208.0
+offset_right = 808.0
+offset_bottom = -160.0
+
+[node name="Quit" parent="." index="3"]
+offset_left = 872.0
+offset_top = -208.0
+offset_right = 1160.0
+offset_bottom = -160.0
+
+[node name="Label" parent="." index="5"]
+offset_left = 0.0
+offset_top = 40.0
+offset_right = 1094.0
+offset_bottom = 496.67743
+text = "The Gleam’s glow returns, but the cost lingers 
+in every corner of Lumenfell.
+Ruins remain ruins.
+Echoes remain echoes.
+Some wounds will never truly heal.
+
+Yet you carried the burden that no one else could.
+
+The Sundering Beast is gone, but the scars of the Pulse stay.
+Lumenfell rises, gently, but it rises without those who were lost."
+label_settings = ExtResource("2_a5iy6")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AudioStreamPlayer" parent="." index="6"]
+stream = ExtResource("3_m1mla")
+
+[node name="Button" type="Button" parent="." index="7"]
+offset_left = 344.0
+offset_top = 528.0
+offset_right = 704.0
+offset_bottom = 592.0
+
+[node name="Label" type="Label" parent="Button" index="0"]
+layout_mode = 0
+offset_right = 360.0
+offset_bottom = 64.0
+text = "Main Menu"
+label_settings = ExtResource("4_tbef5")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

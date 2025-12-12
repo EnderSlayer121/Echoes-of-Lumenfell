@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://h6un7k548n51"
+path="res://.godot/imported/The Greened Path.mp3-ff194b91cf765c92149d718a4790b1b4.mp3str"
+
+[deps]
+
+source_file="res://audio/music/The Greened Path.mp3"
+dest_files=["res://.godot/imported/The Greened Path.mp3-ff194b91cf765c92149d718a4790b1b4.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

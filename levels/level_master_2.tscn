@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://ckyu7wwoi4pmt"]
+
+[ext_resource type="PackedScene" uid="uid://cidmfm40q26oh" path="res://levels/level_master.tscn" id="1_7dmf6"]
+
+[node name="level_master" instance=ExtResource("1_7dmf6")]
+
+[node name="Wanderer" parent="." index="0"]
+position = Vector2(3344, -1152)

@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://d4lcrc6ae3bd8"]
+
+[ext_resource type="PackedScene" uid="uid://bda12lngjxqh1" path="res://UI/mainmenu.tscn" id="1_k6fnb"]
+[ext_resource type="AudioStream" uid="uid://g2ugvkuxnggc" path="res://audio/music/Credits.mp3" id="2_3p6rv"]
+
+[node name="CanvasLayer" instance=ExtResource("1_k6fnb")]
+
+[node name="AudioStreamPlayer" parent="." index="6"]
+stream = ExtResource("2_3p6rv")

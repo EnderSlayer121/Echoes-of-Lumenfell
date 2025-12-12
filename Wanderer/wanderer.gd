@@ -35,12 +35,13 @@ var hold_timer = 0.0
 var is_holding = false
 var is_fireball = false
 
-
 func _ready() -> void:
 	$"sword hitbox/sword_collider".disabled = true
+	Main.health = 4
+	Main.soul = 0.0
 
 func _physics_process(delta: float) -> void:
-	if Main.health <= 0:
+	if Main.health <= -1:
 		dead()
 	if !is_dashing:
 		velocity.y += gravity * delta
@@ -52,7 +53,16 @@ func _physics_process(delta: float) -> void:
 	set_animations()
 	flip()
 	soul_use(delta)
+	saving()
 	move_and_slide()
+
+func saving():
+	if Input.is_action_just_pressed("save"):
+		Main.player_position = global_position
+		Main.save_game()
+
+func save_override():
+	Main.save_game()
 
 func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("slash"):
@@ -121,9 +131,7 @@ func jumping():
 func wall_jumping():
 	if is_on_wall_only():
 		velocity.y = wall_slide
-		print("wall sliding")
 		if Input.is_action_just_pressed("jump") and right_ray.is_colliding():
-			print("wall jumping")
 			jump_amount = 2
 			velocity = Vector2(-wall_x_force, wall_y_force)
 			wall_jumping_in_progress()
@@ -158,7 +166,7 @@ func reset_states():
 	is_attacking = false
 
 func dead():
-	get_tree().reload_current_scene()
+	Main.game_over()
 	Main.health = 4
 	Main.soul = 0.0
 
@@ -202,6 +210,6 @@ func can_fireball():
 		get_parent().add_child(fireball)
 		$"../Timer".start()
 		await $"../Timer".timeout
-		#Main.soul -= 0.25
+		Main.soul -= 0.25
 	$parts/charge.visible = false
 	is_fireball = false

@@ -13,6 +13,7 @@ func _ready() -> void:
 	set_camera_limits()
 
 func _physics_process(delta: float) -> void:
+	set_camera_limits()
 	follow_player(delta)
 
 func set_camera_limits():
@@ -39,6 +40,9 @@ func follow_player(delta):
 	#Calculate Where Player is
 	var target_pos = camera_pos
 	
+	if Main.is_loading:
+		global_position = Main.player_position
+	
 	#horizontal movement
 	if abs(player_pos.x - camera_pos.x) > horizontal_dead_zone:
 		if wanderer.is_dashing == true:
@@ -48,13 +52,17 @@ func follow_player(delta):
 		target_pos.x = player_pos.x
 	
 	#vertical movement
-	if player_pos.y < camera_pos.y - vertical_dead_zone:
+	if Main.is_loading == true:
+		target_pos.y = Main.player_position.y
+		position.y = move_toward(position.y, target_pos.y, follow_speed * delta)
+	elif player_pos.y < camera_pos.y - vertical_dead_zone:
 		target_pos.y = player_pos.y
 	elif player_pos.y > camera_pos.y + vertical_dead_zone:
 		target_pos.y = player_pos.y
 	
 	#smoother movement
 	position.x = move_toward(position.x, target_pos.x, follow_speed * delta)
+	
 	
 	#when wanderer falling
 	if player_pos.y > camera_pos.y:

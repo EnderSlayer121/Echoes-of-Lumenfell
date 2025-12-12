@@ -1,0 +1,89 @@
+[gd_scene load_steps=8 format=3 uid="uid://bu76g3pjjxf4l"]
+
+[ext_resource type="PackedScene" uid="uid://b47458bwfg80w" path="res://Wanderer/wanderer.tscn" id="1_rehhq"]
+[ext_resource type="Script" uid="uid://dc3rg82kse7g3" path="res://Wanderer/character_body_2d.gd" id="2_rpjqj"]
+[ext_resource type="Texture2D" uid="uid://r0spli5fmdyj" path="res://assets/NPC.png" id="2_yeho3"]
+[ext_resource type="Script" uid="uid://xxhljr4d0tbx" path="res://Wanderer/talking_area.gd" id="3_rpjqj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mgxh4"]
+size = Vector2(281, 74)
+
+[sub_resource type="SystemFont" id="SystemFont_5vdti"]
+font_names = PackedStringArray("Segoe UI")
+
+[sub_resource type="LabelSettings" id="LabelSettings_l2kgw"]
+line_spacing = 1.0
+font = SubResource("SystemFont_5vdti")
+outline_size = 13
+outline_color = Color(0, 0, 0, 1)
+
+[node name="Wanderer" instance=ExtResource("1_rehhq")]
+
+[node name="CharacterBody2D" parent="." index="0"]
+script = ExtResource("2_rpjqj")
+
+[node name="capeback" parent="CharacterBody2D/parts" index="2"]
+visible = false
+texture = ExtResource("2_yeho3")
+
+[node name="rightarm" parent="CharacterBody2D/parts" index="3"]
+texture = ExtResource("2_yeho3")
+
+[node name="sword" parent="CharacterBody2D/parts" index="4"]
+texture = ExtResource("2_yeho3")
+
+[node name="rightleg" parent="CharacterBody2D/parts" index="5"]
+texture = ExtResource("2_yeho3")
+
+[node name="leftleg" parent="CharacterBody2D/parts" index="6"]
+texture = ExtResource("2_yeho3")
+
+[node name="torso" parent="CharacterBody2D/parts" index="7"]
+texture = ExtResource("2_yeho3")
+
+[node name="leftarm" parent="CharacterBody2D/parts" index="8"]
+texture = ExtResource("2_yeho3")
+
+[node name="capefront" parent="CharacterBody2D/parts" index="9"]
+texture = ExtResource("2_yeho3")
+
+[node name="head" parent="CharacterBody2D/parts" index="10"]
+texture = ExtResource("2_yeho3")
+
+[node name="Skeleton2D" parent="CharacterBody2D" index="1"]
+visible = false
+
+[node name="CollisionShape2D" parent="CharacterBody2D" index="2"]
+visible = false
+
+[node name="RayCast" parent="CharacterBody2D" index="4"]
+visible = false
+
+[node name="sword hitbox" parent="CharacterBody2D" index="5"]
+visible = false
+
+[node name="Talking Area" type="Area2D" parent="CharacterBody2D" index="6"]
+script = ExtResource("3_rpjqj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/Talking Area" index="0"]
+position = Vector2(2.5, 1)
+shape = SubResource("RectangleShape2D_mgxh4")
+
+[node name="Label" type="Label" parent="CharacterBody2D" index="7"]
+visible = false
+offset_left = -171.0
+offset_top = -221.0
+offset_right = 2600.0
+offset_bottom = -16.0
+text = "Alright, this is how far the corruption has 
+made it since the Gleam broke. I'm going to stay 
+behind and make sure the corrupted doesn't get 
+to the villagers. Go on ahead and deal with 
+the Sundering Beast in the Abandoned Kingdom. 
+That should dramatically decrease the corruption 
+enough to find the pieces of the Gleam. 
+Be careful, Lumenfell rests on our shoulders, now."
+label_settings = SubResource("LabelSettings_l2kgw")
+
+[connection signal="body_entered" from="CharacterBody2D/Talking Area" to="CharacterBody2D/Talking Area" method="_on_body_entered"]
+[connection signal="body_exited" from="CharacterBody2D/Talking Area" to="CharacterBody2D/Talking Area" method="_on_body_exited"]

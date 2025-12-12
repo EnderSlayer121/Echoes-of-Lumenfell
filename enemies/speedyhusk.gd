@@ -11,10 +11,8 @@ func _physics_process(delta: float) -> void:
 		velocity.y += gravity * delta
 	if $Sprite2D/RayCast2D.is_colliding() or $Sprite2D/RayCast2D3.is_colliding():
 		flip()
-		print("Enemy colliding while on floor")
 	if !$Sprite2D/RayCast2D2.is_colliding() or !$Sprite2D/RayCast2D4.is_colliding():
 		flip()
-		print("Enemy colliding not on floor")
 	velocity.x = enemyspeed
 	if health <= 0:
 		queue_free()

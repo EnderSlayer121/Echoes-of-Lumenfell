@@ -1,0 +1,42 @@
+[gd_scene load_steps=3 format=3 uid="uid://r2oeocbfvooj"]
+
+[ext_resource type="PackedScene" uid="uid://b47458bwfg80w" path="res://Wanderer/wanderer.tscn" id="1_n7auy"]
+[ext_resource type="Script" uid="uid://n47wsi53l3gc" path="res://UI/death.gd" id="2_0w8dq"]
+
+[node name="Wanderer" instance=ExtResource("1_n7auy")]
+
+[node name="CharacterBody2D" parent="." index="0"]
+script = ExtResource("2_0w8dq")
+
+[node name="slash" parent="CharacterBody2D/parts" index="1"]
+visible = false
+
+[node name="capeback" parent="CharacterBody2D/parts" index="2"]
+visible = false
+
+[node name="rightarm" parent="CharacterBody2D/parts" index="3"]
+visible = false
+
+[node name="sword" parent="CharacterBody2D/parts" index="4"]
+visible = false
+
+[node name="rightleg" parent="CharacterBody2D/parts" index="5"]
+visible = false
+
+[node name="leftleg" parent="CharacterBody2D/parts" index="6"]
+visible = false
+
+[node name="torso" parent="CharacterBody2D/parts" index="7"]
+visible = false
+
+[node name="leftarm" parent="CharacterBody2D/parts" index="8"]
+visible = false
+
+[node name="capefront" parent="CharacterBody2D/parts" index="9"]
+visible = false
+
+[node name="Base" parent="CharacterBody2D/Skeleton2D" index="0"]
+visible = false
+
+[node name="sword hitbox" parent="CharacterBody2D" index="5"]
+visible = false

@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://ci6ldsapv1fdh"]
+
+[ext_resource type="PackedScene" uid="uid://cgqat5wjwwcph" path="res://UI/fail.tscn" id="1_odno5"]
+[ext_resource type="Script" uid="uid://bony2fe6ufxhc" path="res://UI/fail_3.gd" id="2_s0idf"]
+
+[node name="CanvasLayer" instance=ExtResource("1_odno5")]
+script = ExtResource("2_s0idf")
+
+[node name="Label3" parent="." index="3"]
+text = "Your mask collapses alone, lost among forgotten 
+halls and motionless air. Lumenfell follows, with a quiet end.
+The world watches quietly, as your mask fades away."
+
+[node name="Label" parent="Restart" index="0"]
+focus_neighbor_top = NodePath("../../Load")
+focus_neighbor_right = NodePath("../../Quit")
+focus_neighbor_bottom = NodePath("../../Load")

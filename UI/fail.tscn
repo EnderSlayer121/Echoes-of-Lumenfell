@@ -1,0 +1,133 @@
+[gd_scene load_steps=10 format=3 uid="uid://cgqat5wjwwcph"]
+
+[ext_resource type="Script" uid="uid://4v8vdpajutx8" path="res://UI/fail.gd" id="1_kcp4h"]
+[ext_resource type="Texture2D" uid="uid://cdipcd7wdad0j" path="res://assets/failure.png" id="2_56b2l"]
+[ext_resource type="PackedScene" uid="uid://r2oeocbfvooj" path="res://Wanderer/non-controllable_wanderer.tscn" id="2_i1oq4"]
+[ext_resource type="LabelSettings" uid="uid://bmb7p83v7nfra" path="res://UI/mainmenu3.tres" id="4_6tsmi"]
+[ext_resource type="AudioStream" uid="uid://blrw5cqjmbaiv" path="res://audio/music/The Fallen.mp3" id="4_56b2l"]
+
+[sub_resource type="SystemFont" id="SystemFont_6tsmi"]
+font_names = PackedStringArray("Times New Roman")
+subpixel_positioning = 0
+
+[sub_resource type="LabelSettings" id="LabelSettings_kcp4h"]
+font = SubResource("SystemFont_6tsmi")
+font_size = 80
+outline_size = 19
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="SystemFont" id="SystemFont_2al5h"]
+font_names = PackedStringArray("Times New Roman")
+subpixel_positioning = 0
+
+[sub_resource type="LabelSettings" id="LabelSettings_h3otu"]
+font = SubResource("SystemFont_2al5h")
+font_size = 42
+outline_size = 19
+outline_color = Color(0, 0, 0, 1)
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_kcp4h")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(576, 328)
+scale = Vector2(3, 3)
+texture = ExtResource("2_56b2l")
+vframes = 151
+
+[node name="Wanderer" parent="." instance=ExtResource("2_i1oq4")]
+position = Vector2(513, 389)
+scale = Vector2(3, 3)
+
+[node name="Label" type="Label" parent="."]
+offset_left = 320.0
+offset_top = 472.0
+offset_right = 951.0
+offset_bottom = 623.0
+text = "GAME OVER"
+label_settings = SubResource("LabelSettings_kcp4h")
+
+[node name="Label3" type="Label" parent="."]
+offset_left = -40.0
+offset_top = 8.0
+offset_right = 1118.0
+offset_bottom = 158.0
+text = "Your mask falls into an eternal silence as Lumenfell soon after 
+falls into an eternal corruption. A quiet end befalls everyone, 
+as the world drifts closer toward ruin."
+label_settings = SubResource("LabelSettings_h3otu")
+horizontal_alignment = 1
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.05
+
+[node name="Load" type="Button" parent="."]
+offset_left = 72.0
+offset_top = 344.0
+offset_right = 374.0
+offset_bottom = 400.0
+focus_neighbor_left = NodePath("../Quit")
+focus_neighbor_right = NodePath("../Quit")
+focus_neighbor_bottom = NodePath("../Restart")
+focus_next = NodePath("../Restart")
+focus_previous = NodePath("../Quit")
+
+[node name="Label" type="Label" parent="Load"]
+layout_mode = 0
+offset_right = 296.0
+offset_bottom = 54.0
+text = "Load Last Save"
+label_settings = ExtResource("4_6tsmi")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Quit" type="Button" parent="."]
+offset_left = 784.0
+offset_top = 344.0
+offset_right = 1032.0
+offset_bottom = 392.0
+focus_neighbor_left = NodePath("../Load")
+focus_neighbor_bottom = NodePath("../Restart")
+focus_next = NodePath("../Load")
+focus_previous = NodePath("../Restart")
+
+[node name="Label" type="Label" parent="Quit"]
+layout_mode = 0
+offset_right = 248.0
+offset_bottom = 48.0
+text = "Quit"
+label_settings = ExtResource("4_6tsmi")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Restart" type="Button" parent="."]
+offset_left = 72.0
+offset_top = 424.0
+offset_right = 376.0
+offset_bottom = 466.0
+focus_neighbor_left = NodePath("../Load")
+focus_neighbor_top = NodePath("../Load")
+focus_neighbor_right = NodePath("../Quit")
+focus_neighbor_bottom = NodePath("../Load")
+focus_next = NodePath("../Quit")
+focus_previous = NodePath("../Load")
+
+[node name="Label" type="Label" parent="Restart"]
+layout_mode = 0
+offset_top = 1.0
+offset_right = 304.0
+offset_bottom = 43.967743
+text = "Restart"
+label_settings = ExtResource("4_6tsmi")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_56b2l")
+volume_db = -10.986
+pitch_scale = 0.5
+autoplay = true
+
+[connection signal="pressed" from="Load" to="." method="_on_load_pressed"]
+[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="Restart" to="." method="_on_restart_pressed"]

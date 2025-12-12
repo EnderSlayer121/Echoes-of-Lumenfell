@@ -36,6 +36,16 @@ target_position = Vector2(15, 26)
 position = Vector2(13, 16)
 target_position = Vector2(0, 20)
 
+[node name="RayCast2D5" type="RayCast2D" parent="Sprite2D" index="4"]
+position = Vector2(0, -23)
+target_position = Vector2(-10, -4)
+collision_mask = 8
+
+[node name="RayCast2D6" type="RayCast2D" parent="Sprite2D" index="5"]
+position = Vector2(0, -23)
+target_position = Vector2(13, -3)
+collision_mask = 8
+
 [node name="CollisionShape2D" parent="." index="1"]
 position = Vector2(3, 2)
 shape = SubResource("CapsuleShape2D_6urxf")

@@ -9,12 +9,10 @@ var facing_right = false
 func _physics_process(delta: float) -> void:
 	if not is_on_floor(): #Check if on solid ground
 		velocity.y += gravity * delta
-	if $Sprite2D/RayCast2D.is_colliding() or $Sprite2D/RayCast2D3.is_colliding():
+	if $Sprite2D/RayCast2D.is_colliding() or $Sprite2D/RayCast2D3.is_colliding() or $Sprite2D/RayCast2D5.is_colliding() or $Sprite2D/RayCast2D6.is_colliding():
 		flip()
-		print("Enemy colliding while on floor")
 	if !$Sprite2D/RayCast2D2.is_colliding() or !$Sprite2D/RayCast2D4.is_colliding():
 		flip()
-		print("Enemy colliding not on floor")
 	velocity.x = enemyspeed
 	if health <= 0:
 		queue_free()

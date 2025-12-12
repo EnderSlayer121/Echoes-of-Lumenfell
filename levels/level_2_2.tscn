@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://b6yltpivd5gvq"]
+
+[ext_resource type="PackedScene" uid="uid://dlkpis14ayf8t" path="res://levels/level_2.tscn" id="1_h1t3j"]
+
+[node name="level_master" instance=ExtResource("1_h1t3j")]
+
+[node name="Wanderer" parent="." index="0"]
+position = Vector2(2368, -3632)
+
+[node name="Wanderer2" parent="." index="35"]
+visible = false

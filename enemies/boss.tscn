@@ -1,0 +1,48 @@
+[gd_scene load_steps=6 format=3 uid="uid://cqgqh6887km14"]
+
+[ext_resource type="PackedScene" uid="uid://qlf1o01jwoif" path="res://enemies/speedyhusk.tscn" id="1_a60ye"]
+[ext_resource type="Texture2D" uid="uid://cfyiilvdi8cge" path="res://assets/boss.png" id="2_n18d2"]
+[ext_resource type="Script" uid="uid://bq3bl2igp6wdf" path="res://enemies/boss.gd" id="2_nbsx1"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nbsx1"]
+radius = 49.0
+height = 124.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_85rbr"]
+size = Vector2(94, 127)
+
+[node name="SpeedyHusk" instance=ExtResource("1_a60ye")]
+script = ExtResource("2_nbsx1")
+health = 25
+damage = 2.0
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_n18d2")
+
+[node name="RayCast2D" parent="Sprite2D" index="0"]
+target_position = Vector2(-37, 31)
+
+[node name="RayCast2D2" parent="Sprite2D" index="1"]
+position = Vector2(-28, 48)
+
+[node name="RayCast2D3" parent="Sprite2D" index="2"]
+target_position = Vector2(66, 31)
+
+[node name="RayCast2D4" parent="Sprite2D" index="3"]
+position = Vector2(66, 48)
+
+[node name="CollisionShape2D2" parent="." index="2"]
+visible = false
+disabled = true
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="." index="3"]
+position = Vector2(16, 2)
+shape = SubResource("CapsuleShape2D_nbsx1")
+
+[node name="CollisionShape2D2" parent="hitbox" index="1"]
+visible = false
+disabled = true
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="hitbox" index="2"]
+position = Vector2(12, 0.5)
+shape = SubResource("RectangleShape2D_85rbr")
