@@ -1,4 +1,13 @@
 # Godot 4+ specific ignores
 .godot/
 /android/
-.exe/
+# Godot exported builds
+res://export_presets.cfg
+*.exe
+*.zip
+*.tar.gz
+*.dmg
+*.app
+*.x86_64
+*.pck
+*.ugg
