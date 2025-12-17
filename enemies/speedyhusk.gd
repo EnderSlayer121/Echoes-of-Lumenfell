@@ -47,9 +47,6 @@ func _on_hitbox_area_entered(area: Area2D) -> void:
 		await $hitbyPlayer.timeout
 		$Sprite2D.self_modulate = "ffffff"
 		$hitbox/CollisionShape2D.disabled = false
-	if area.is_in_group("Player") and $hitPlayer.is_stopped():
-		Main.health -= damage
-		$hitPlayer.start()
 
 func _on_hitbox_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player") and $hitPlayer.is_stopped() and $hitbyPlayer.is_stopped():
