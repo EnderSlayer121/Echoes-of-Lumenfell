@@ -35,12 +35,14 @@ offset_right = 576.0
 offset_bottom = -144.0
 
 [node name="Label" parent="." index="5"]
+offset_left = 342.0
+offset_right = 787.0
 text = "Controls:"
 
 [node name="Label2" type="Label" parent="." index="7"]
-offset_left = 160.0
+offset_left = 176.0
 offset_top = 112.0
-offset_right = 342.0
+offset_right = 358.0
 offset_bottom = 154.96774
 text = "Keyboard"
 label_settings = ExtResource("2_xtm8h")
@@ -92,35 +94,35 @@ label_settings = ExtResource("2_03eog")
 
 [node name="Label6" type="Label" parent="Label2" index="5"]
 layout_mode = 0
-offset_left = 240.0
+offset_left = 280.0
 offset_top = 336.0
-offset_right = 494.0
+offset_right = 534.0
 offset_bottom = 378.96774
 text = "Soul Abilities"
 label_settings = ExtResource("2_xtm8h")
 
 [node name="Label7" type="Label" parent="Label2" index="6"]
 layout_mode = 0
-offset_left = 280.0
+offset_left = 270.0
 offset_top = 400.0
-offset_right = 474.0
+offset_right = 490.0
 offset_bottom = 433.41934
 text = "Charge (HOLD)"
 label_settings = ExtResource("2_03eog")
 
 [node name="Label8" type="Label" parent="Label2" index="7"]
 layout_mode = 0
-offset_left = 280.0
+offset_left = 272.0
 offset_top = 456.0
-offset_right = 482.0
+offset_right = 474.0
 offset_bottom = 489.41934
 text = "Fireball (TAP)"
 label_settings = ExtResource("2_03eog")
 
 [node name="Label3" type="Label" parent="." index="8"]
-offset_left = 720.0
+offset_left = 744.0
 offset_top = 112.0
-offset_right = 916.0
+offset_right = 940.0
 offset_bottom = 154.96774
 text = "Controller"
 label_settings = ExtResource("2_xtm8h")
@@ -183,7 +185,7 @@ region_enabled = true
 region_rect = Rect2(237.67207, 271.0085, 137.62541, 127.37671)
 
 [node name="ControllerButtons9" type="Sprite2D" parent="Label3" index="8"]
-position = Vector2(-21, 352)
+position = Vector2(-57.999996, 352)
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("4_2oh8b")
 region_enabled = true
@@ -220,7 +222,7 @@ scale = Vector2(0.2, 0.2)
 texture = ExtResource("9_0qap5")
 
 [node name="C" type="Sprite2D" parent="Label3" index="15"]
-position = Vector2(-368, 352)
+position = Vector2(-328.00003, 352)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("11_plbov")
 

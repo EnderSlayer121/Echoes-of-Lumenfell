@@ -27,9 +27,9 @@ offset_right = 424.0
 offset_bottom = -104.0
 
 [node name="Label" parent="." index="5"]
-offset_left = 0.0
+offset_left = 40.0
 offset_top = 40.0
-offset_right = 1061.0
+offset_right = 1101.0
 offset_bottom = 525.7096
 text = "Deep beneath a forgotten continent lies Lumenfell, an ancient 
 subterranean world built around a mystical energy called Gleam, 
@@ -48,9 +48,9 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Button" type="Button" parent="." index="7"]
-offset_left = 400.0
+offset_left = 432.0
 offset_top = 544.0
-offset_right = 664.0
+offset_right = 696.0
 offset_bottom = 616.0
 
 [node name="Label" type="Label" parent="Button" index="0"]

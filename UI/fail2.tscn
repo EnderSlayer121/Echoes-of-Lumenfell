@@ -1,19 +1,137 @@
-[gd_scene load_steps=3 format=3 uid="uid://cgmmdsqcyg5w1"]
+[gd_scene load_steps=10 format=3 uid="uid://cgmmdsqcyg5w1"]
 
-[ext_resource type="PackedScene" uid="uid://cgqat5wjwwcph" path="res://UI/fail.tscn" id="1_llcjf"]
 [ext_resource type="Script" uid="uid://dtg2rkq4f5eut" path="res://UI/fail_2.gd" id="2_nat8d"]
+[ext_resource type="Texture2D" uid="uid://cdipcd7wdad0j" path="res://assets/failure.png" id="2_w5upq"]
+[ext_resource type="PackedScene" uid="uid://r2oeocbfvooj" path="res://Wanderer/non-controllable_wanderer.tscn" id="3_vw3wn"]
+[ext_resource type="LabelSettings" uid="uid://bmb7p83v7nfra" path="res://UI/mainmenu3.tres" id="4_fe8kx"]
+[ext_resource type="AudioStream" uid="uid://blrw5cqjmbaiv" path="res://audio/music/The Fallen.mp3" id="5_plt2f"]
 
-[node name="CanvasLayer" instance=ExtResource("1_llcjf")]
+[sub_resource type="SystemFont" id="SystemFont_6tsmi"]
+font_names = PackedStringArray("Times New Roman")
+subpixel_positioning = 0
+
+[sub_resource type="LabelSettings" id="LabelSettings_kcp4h"]
+font = SubResource("SystemFont_6tsmi")
+font_size = 80
+outline_size = 19
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="SystemFont" id="SystemFont_2al5h"]
+font_names = PackedStringArray("Times New Roman")
+subpixel_positioning = 0
+
+[sub_resource type="LabelSettings" id="LabelSettings_h3otu"]
+font = SubResource("SystemFont_2al5h")
+font_size = 42
+outline_size = 19
+outline_color = Color(0, 0, 0, 1)
+
+[node name="CanvasLayer" type="CanvasLayer"]
 script = ExtResource("2_nat8d")
 
-[node name="Label3" parent="." index="3"]
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(576, 328)
+scale = Vector2(3, 3)
+texture = ExtResource("2_w5upq")
+vframes = 151
+
+[node name="Wanderer" parent="." instance=ExtResource("3_vw3wn")]
+position = Vector2(513, 389)
+scale = Vector2(3, 3)
+
+[node name="Label" type="Label" parent="."]
+offset_left = 256.0
+offset_top = 452.0
+offset_right = 887.0
+offset_bottom = 603.0
+text = "GAME OVER"
+label_settings = SubResource("LabelSettings_kcp4h")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="."]
+offset_left = -1.0
+offset_top = 48.0
+offset_right = 1157.0
+offset_bottom = 249.0
 text = "Your mask is swallowed by the growing green as the 
 corruption overtakes Greenpath and approaches Lumenfell. 
 The overgrowth tangles around your withering mask 
 as the forest forever hushes."
+label_settings = SubResource("LabelSettings_h3otu")
+horizontal_alignment = 1
 
-[node name="Load" parent="." index="5"]
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.05
+
+[node name="Load" type="Button" parent="."]
 offset_left = 56.0
-offset_top = 347.0
+offset_top = 336.0
 offset_right = 358.0
-offset_bottom = 403.0
+offset_bottom = 392.0
+focus_neighbor_left = NodePath("../Quit")
+focus_neighbor_right = NodePath("../Quit")
+focus_neighbor_bottom = NodePath("../Restart")
+focus_next = NodePath("../Restart")
+focus_previous = NodePath("../Quit")
+
+[node name="Label" type="Label" parent="Load"]
+layout_mode = 0
+offset_right = 296.0
+offset_bottom = 54.0
+text = "Load Last Save"
+label_settings = ExtResource("4_fe8kx")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Quit" type="Button" parent="."]
+offset_left = 816.0
+offset_top = 344.0
+offset_right = 1064.0
+offset_bottom = 392.0
+focus_neighbor_left = NodePath("../Load")
+focus_neighbor_bottom = NodePath("../Restart")
+focus_next = NodePath("../Load")
+focus_previous = NodePath("../Restart")
+
+[node name="Label" type="Label" parent="Quit"]
+layout_mode = 0
+offset_right = 248.0
+offset_bottom = 48.0
+text = "Quit"
+label_settings = ExtResource("4_fe8kx")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Restart" type="Button" parent="."]
+offset_left = 72.0
+offset_top = 413.0
+offset_right = 376.0
+offset_bottom = 455.0
+focus_neighbor_left = NodePath("../Load")
+focus_neighbor_top = NodePath("../Load")
+focus_neighbor_right = NodePath("../Quit")
+focus_neighbor_bottom = NodePath("../Load")
+focus_next = NodePath("../Quit")
+focus_previous = NodePath("../Load")
+
+[node name="Label" type="Label" parent="Restart"]
+layout_mode = 0
+offset_top = 1.0
+offset_right = 304.0
+offset_bottom = 43.967743
+text = "Restart"
+label_settings = ExtResource("4_fe8kx")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_plt2f")
+volume_db = -10.986
+pitch_scale = 0.5
+autoplay = true
+parameters/looping = true
+
+[connection signal="pressed" from="Load" to="." method="_on_load_pressed"]
+[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="Restart" to="." method="_on_restart_pressed"]

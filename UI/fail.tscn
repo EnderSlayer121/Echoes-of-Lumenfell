@@ -36,22 +36,24 @@ texture = ExtResource("2_56b2l")
 vframes = 151
 
 [node name="Wanderer" parent="." instance=ExtResource("2_i1oq4")]
-position = Vector2(513, 389)
+position = Vector2(561, 423)
 scale = Vector2(3, 3)
 
 [node name="Label" type="Label" parent="."]
-offset_left = 320.0
-offset_top = 472.0
-offset_right = 951.0
-offset_bottom = 623.0
+offset_left = 256.0
+offset_top = 482.0
+offset_right = 887.0
+offset_bottom = 633.0
+pivot_offset = Vector2(368, 72)
 text = "GAME OVER"
 label_settings = SubResource("LabelSettings_kcp4h")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Label3" type="Label" parent="."]
-offset_left = -40.0
-offset_top = 8.0
-offset_right = 1118.0
-offset_bottom = 158.0
+offset_top = 40.0
+offset_right = 1158.0
+offset_bottom = 190.0
 text = "Your mask falls into an eternal silence as Lumenfell soon after 
 falls into an eternal corruption. A quiet end befalls everyone, 
 as the world drifts closer toward ruin."
@@ -62,9 +64,9 @@ horizontal_alignment = 1
 wait_time = 0.05
 
 [node name="Load" type="Button" parent="."]
-offset_left = 72.0
+offset_left = 88.0
 offset_top = 344.0
-offset_right = 374.0
+offset_right = 390.0
 offset_bottom = 400.0
 focus_neighbor_left = NodePath("../Quit")
 focus_neighbor_right = NodePath("../Quit")
@@ -82,9 +84,9 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Quit" type="Button" parent="."]
-offset_left = 784.0
+offset_left = 840.0
 offset_top = 344.0
-offset_right = 1032.0
+offset_right = 1088.0
 offset_bottom = 392.0
 focus_neighbor_left = NodePath("../Load")
 focus_neighbor_bottom = NodePath("../Restart")
@@ -101,9 +103,9 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Restart" type="Button" parent="."]
-offset_left = 72.0
+offset_left = 88.0
 offset_top = 424.0
-offset_right = 376.0
+offset_right = 392.0
 offset_bottom = 466.0
 focus_neighbor_left = NodePath("../Load")
 focus_neighbor_top = NodePath("../Load")
@@ -127,6 +129,7 @@ stream = ExtResource("4_56b2l")
 volume_db = -10.986
 pitch_scale = 0.5
 autoplay = true
+parameters/looping = true
 
 [connection signal="pressed" from="Load" to="." method="_on_load_pressed"]
 [connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]

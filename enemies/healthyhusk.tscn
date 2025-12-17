@@ -70,3 +70,6 @@ disabled = true
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="hitbox" index="2"]
 position = Vector2(2, 2.5)
 shape = SubResource("RectangleShape2D_y3kv7")
+
+[node name="enemyhurt" parent="." index="7"]
+pitch_scale = 1.52

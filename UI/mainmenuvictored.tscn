@@ -5,5 +5,9 @@
 
 [node name="CanvasLayer" instance=ExtResource("1_k6fnb")]
 
+[node name="Label" parent="." index="5"]
+offset_left = 352.0
+offset_right = 797.0
+
 [node name="AudioStreamPlayer" parent="." index="6"]
 stream = ExtResource("2_3p6rv")

@@ -649,6 +649,7 @@ stream = ExtResource("14_7yfrp")
 volume_db = -19.775
 pitch_scale = 0.8
 autoplay = true
+parameters/looping = true
 
 [node name="Wanderer2" parent="." instance=ExtResource("16_qjg72")]
 position = Vector2(-32, -12)

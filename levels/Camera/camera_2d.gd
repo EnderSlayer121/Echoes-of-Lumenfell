@@ -27,9 +27,6 @@ func set_camera_limits():
 	limit_right = limit_left + map_width
 	limit_top = used_rect.position.y * cell_size.y
 	limit_bottom = limit_top + map_height
-	
-	print("TileMap Limits: left: ", limit_left, ", right: ", limit_right, ", top: ", limit_top, ", bottom: ", limit_bottom)
-	print("TileMap Size (in px): width: ", map_width, "x, height: ", map_height, "y")
 
 func follow_player(delta):
 	if not wanderer:

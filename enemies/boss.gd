@@ -28,13 +28,31 @@ func flip():
 		enemyspeed = abs(enemyspeed) * -1
 
 func _on_hitbox_area_entered(area: Area2D) -> void:
-	if area.is_in_group("Sword"):
+	if area.is_in_group("Sword") and $hitbyPlayer.is_stopped():
 		health -= 1
-		if Main.soul <= 1.0:
+		$hitbyPlayer.start()
+		$Sprite2D.self_modulate = "ffffff7d"
+		$enemyhurt.play()
+		$hitbox/CollisionShape2D.disabled = true
+		if Main.soul < 1.0:
 			Main.soul += 0.25
-	if area.is_in_group("Fireball"):
+		await $hitbyPlayer.timeout
+		$Sprite2D.self_modulate = "ffffff"
+		$hitbox/CollisionShape2D.disabled = false
+	if area.is_in_group("Fireball") and $hitbyPlayer.is_stopped():
 		health -= 2
+		$hitbyPlayer.start()
+		$Sprite2D.self_modulate = "ffffff7d"
+		$enemyhurt.play()
+		$hitbox/CollisionShape2D.disabled = true
+		await $hitbyPlayer.timeout
+		$Sprite2D.self_modulate = "ffffff"
+		$hitbox/CollisionShape2D.disabled = false
+	if area.is_in_group("Player") and $hitPlayer.is_stopped():
+		Main.health -= damage
+		$hitPlayer.start()
 
 func _on_hitbox_body_entered(body: Node2D) -> void:
-	if body.is_in_group("Player"):
+	if body.is_in_group("Player") and $hitPlayer.is_stopped():
 		Main.health -= damage
+		$hitPlayer.start()

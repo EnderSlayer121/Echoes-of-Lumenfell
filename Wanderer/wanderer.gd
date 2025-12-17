@@ -6,7 +6,7 @@ extends CharacterBody2D
 var movement = Vector2()
 
 @export_category("Jumping Variables")
-@export var jump_height = 190.0
+@export var jump_height = 220.0
 @export var jump_acceleration = 290.0
 @export var jump_amount = 2
 
@@ -53,7 +53,6 @@ func _physics_process(delta: float) -> void:
 	set_animations()
 	flip()
 	soul_use(delta)
-	saving()
 	move_and_slide()
 
 func saving():
@@ -95,6 +94,7 @@ func set_animations():
 			$AnimationPlayer.play("slide")
 	if is_attacking:
 		$AnimationPlayer.speed_scale = 2.5
+		$"../slash".play()
 		$AnimationPlayer.play("attack_forward")
 	if is_holding and !is_fireball:
 		$AnimationPlayer.play("charge")
@@ -138,6 +138,7 @@ func wall_jumping():
 
 func wall_jumping_in_progress():
 	is_wall_jumping = true
+	$"../swoosh".play()
 	await get_tree().create_timer(0.12).timeout
 	is_wall_jumping = false
 
@@ -156,6 +157,7 @@ func dash():
 func dash_in_progress():
 	if is_dashing == true:
 		dash_key_pressed = 1
+		$"../swoosh".play()
 		await get_tree().create_timer(0.3).timeout
 		is_dashing = false
 		dash_key_pressed = 0
@@ -166,8 +168,6 @@ func reset_states():
 	is_attacking = false
 
 func dead():
-	Main.game_over()
-	Main.health = 4
 	Main.soul = 0.0
 
 func soul_use(delta):
@@ -184,7 +184,7 @@ func soul_use(delta):
 			if hold_timer >= hold_time:
 				can_charge_soul()
 				print("soul can be charged")
-			elif hold_timer < hold_time:
+			elif hold_timer < hold_time and !is_fireball:
 				is_fireball = true
 				can_fireball()
 				print("soul can be fireballed")
@@ -208,6 +208,7 @@ func can_fireball():
 			fireball.rotation_degrees = 180
 			fireball.set("velocity", Vector2(500 * -1, 0))
 		get_parent().add_child(fireball)
+		$"../fireball".play()
 		$"../Timer".start()
 		await $"../Timer".timeout
 		Main.soul -= 0.25

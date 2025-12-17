@@ -5,9 +5,9 @@ func _ready() -> void:
 		Main.health = 4
 		Main.soul = 0.0
 
-func _physics_process(delta: float) -> void:
-	await $BgMusic.finished
-	$BgMusic.play()
+func _process(delta: float) -> void:
+	if Main.health <= -1:
+		Main.game_over_1()
 
 func on_game_data_loaded(data: Dictionary):
 	var player_node = find_child("Wanderer")

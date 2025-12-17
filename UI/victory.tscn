@@ -24,9 +24,9 @@ offset_right = 1160.0
 offset_bottom = -160.0
 
 [node name="Label" parent="." index="5"]
-offset_left = 0.0
+offset_left = 24.0
 offset_top = 40.0
-offset_right = 1094.0
+offset_right = 1118.0
 offset_bottom = 496.67743
 text = "The Gleam’s glow returns, but the cost lingers 
 in every corner of Lumenfell.
@@ -46,9 +46,9 @@ vertical_alignment = 1
 stream = ExtResource("3_m1mla")
 
 [node name="Button" type="Button" parent="." index="7"]
-offset_left = 344.0
+offset_left = 376.0
 offset_top = 528.0
-offset_right = 704.0
+offset_right = 736.0
 offset_bottom = 592.0
 
 [node name="Label" type="Label" parent="Button" index="0"]

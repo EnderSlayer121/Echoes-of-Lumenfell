@@ -46,3 +46,13 @@ disabled = true
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="hitbox" index="2"]
 position = Vector2(12, 0.5)
 shape = SubResource("RectangleShape2D_85rbr")
+
+[node name="hitPlayer" parent="." index="5"]
+wait_time = 1.0
+one_shot = false
+
+[node name="hitbyPlayer" parent="." index="6"]
+one_shot = false
+
+[node name="enemyhurt" parent="." index="7"]
+pitch_scale = 1.3
